@@ -9,6 +9,7 @@
     "bcrypt": "^5.1.1",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
+    "docxtemplater": "^3.46.2",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
     "express-validator": "^7.0.1",

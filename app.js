@@ -22,6 +22,7 @@ app.use('/api/v1', require('./routes/index'));
 mongoose.connect('mongodb://localhost:27017/DoAn').then(function () {
   console.log("conneted");
 })
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));

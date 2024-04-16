@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Listing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        img {
+            max-width: 100px;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Job Listing</h1>
+
+        <table id="jobTable">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Location</th>
+                    <th>Post Date</th>
+                    <!-- Add more headers if needed -->
+                </tr>
+            </thead>
+            <tbody id="jobTableBody">
+                <!-- Job data will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Function to fetch job data from API and render it on the page
+        async function fetchJobs() {
+            try {
+                const response = await fetch('/api/jobs'); // Assuming the API endpoint is '/api/jobs'
+                const data = await response.json();
+
+                // Clear previous data
+                document.getElementById('jobTableBody').innerHTML = '';
+
+                // Render each job row
+                data.forEach(job => {
+                    const newRow = document.createElement('tr');
+                    newRow.innerHTML = `
+                        <td>${job.title}</td>
+                        <td>${job.description}</td>
+                        <td>${job.location}</td>
+                        <td>${new Date(job.postDate).toLocaleDateString()}</td>
+                        <!-- Add more cells if needed -->
+                    `;
+                    document.getElementById('jobTableBody').appendChild(newRow);
+                });
+            } catch (error) {
+                console.error('Error fetching jobs:', error);
+            }
+        }
+
+        // Call fetchJobs when the page loads
+        window.onload = fetchJobs;
+    </script>
+</body>
+
+</html>

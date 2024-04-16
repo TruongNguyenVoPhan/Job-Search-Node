@@ -1,9 +1,9 @@
 module.exports = {
-    SECRET_KEY: 'NGUYEN',
+    SECRET_KEY: 'Nhan',
     EXPIRE_JWT: '1d',
     hostName: 'localhost:3000',
     Host: "sandbox.smtp.mailtrap.io",
     Port: 25,
-    Username: "4a400843544944",
-    Password: "5f0a69cef133ac"
+    Username: "e43373ebabbacd",
+    Password: "a5d1eceee3f4b7"
 }
